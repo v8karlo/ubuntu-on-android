@@ -6,8 +6,8 @@
 # Copyright (c) 2021 Saicharan Kandukuri <hello.1x1.sai@gmail.com>
 
 
-version="01"
-version_code_name="mad installer mi01"
+version="01.1"
+version_code_name="mad installer mi01.1"
 installer_authors="saicharankandukuri"
 
 # * Deafault color is Blue
@@ -60,8 +60,6 @@ FSM_URL="https://github.com/RandomCoderOrg/fs-manager-udroid"
 # * pulseaudo    - PulseAudio is a networked low-latency sound server for Linux
 #                  (which is used to get audio from hippo using moudle-tcp*)
 # * Others dependencies like tar comes pre-loaded in termux so no need to mention
-DEPENDS="proot-distro pulseaudio git"
-
 
 # * Usefull functions
 # die()     exit with code 1 with printing given string
@@ -84,6 +82,15 @@ case $(uname -m) in
     *)
     die ": sorry Only aarch64 armv7l os architecture is supported for now"
     ;;
+esac
+
+DEPENDS="proot-distro pulseaudio git"
+
+DEFAULT="udroid-xfce.sh"
+case "${0}" in
+  udroid-xfce4.sh) lshout "installing udroid XFCE4" ; INSTALL_FS="udroid-xfce.sh";;
+  udroid-mate.sh) lshout "installing udroid MATE" ; INSTALL_FS="udroid-mate.sh";;
+  *) INSTALL_FS=$DEFAULT;;
 esac
 
 ######################################
@@ -157,8 +164,8 @@ function install()
         mv ${SCRIPT_DIR} "${SCRIPT_DIR}1"
     fi
 
-    if [ -f "${CACHE_ROOT}"/ubuntu-on-android/udroid.sh ]; then
-        cp "${CACHE_ROOT}"/ubuntu-on-android/udroid.sh ${SCRIPT_DIR}
+    if [ -f "${CACHE_ROOT}"/ubuntu-on-android/${INSTALL_FS} ]; then
+        cp "${CACHE_ROOT}"/ubuntu-on-android/${INSTALL_FS} ${SCRIPT_DIR}
     fi
 
     if [ -f "${CACHE_ROOT}"/fs-manager-udroid/install.sh ]; then

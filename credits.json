@@ -1,5 +1,5 @@
 {
-    "scripts": 
+    "scripts":
     {
         "maintainers": ["saicharankandukuri"],
         "installer":
@@ -31,7 +31,7 @@
     },
     "linuxfilesystem":
     {
-        "maintainers": ["saicharankandukuri"],
+        "maintainers": ["saicharankandukuri", "GxmerSam"],
         "linux":
         {
             "name": "ubuntu",
@@ -50,10 +50,18 @@
         },
         "layout":
         {
+          "xfce":{
             "name": "xfsmooth",
             "description": "default layout (dynamic)",
             "owner": "saicharankandukuri",
             "version": "v0.1"
+          },
+          "mate": {
+            "name": "mate",
+            "description": "mate with unity look",
+            "owner": "GxmerSam",
+            "version": "v0.1"
+          },
         },
         "theme":
         {
