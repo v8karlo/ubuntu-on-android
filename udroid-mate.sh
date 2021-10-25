@@ -10,4 +10,5 @@ TARBALL_SHA256['arm']=
 
 # udroid variables..
 SPLIT_TARBALL_FS=true
+PARTS_PROP_FILE="" #this is a link
 PARTS="" # "TODO"
